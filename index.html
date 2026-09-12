@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ada hal penting buat kamu... ❤️</title>
+  <title>Ada yang mau aku omongin...</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,32 +23,10 @@
       text-align: center;
       max-width: 420px;
       width: 100%;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
     }
-    .emoji-main {
-      font-size: 60px;
-      margin-bottom: 15px;
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    h1 {
-      color: #d81b60;
-      font-size: 22px;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-    p {
-      color: #555;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+    .emoji-main { font-size: 60px; margin-bottom: 15px; }
+    h1 { color: #d81b60; font-size: 22px; margin-bottom: 12px; }
+    p { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
     .btn-container {
       display: flex;
       justify-content: center;
@@ -68,22 +42,9 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: all 0.2s ease;
     }
-    #btnMau {
-      background: linear-gradient(45deg, #ff4081, #e91e63);
-      color: white;
-    }
-    #btnMau:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 18px rgba(233, 30, 99, 0.4);
-    }
-    #btnGak {
-      background-color: #888;
-      color: white;
-      position: absolute;
-    }
+    #btnMau { background: #e91e63; color: white; }
+    #btnGak { background-color: #888; color: white; position: absolute; }
   </style>
 </head>
 <body>
@@ -100,12 +61,12 @@
   </div>
 
   <script>
-    // Data Telegram milikmu
+    // Token & ID dari screenshot kamu
     const TELEGRAM_TOKEN = '8901287115:AAG4KALiqyj-ACdt1rLIegW-NJU98TE2HZI';
     const TELEGRAM_CHAT_ID = '7578342046';
 
     function kirimNotifikasi(jawaban) {
-      const pesan = `🚨 *KABAR GEMBIRA!*\n\nDia baru saja klik tombol: *${jawaban}*! ❤️🎉`;
+      const pesan = `🚨 *PEMBERITAHUAN JAWABAN!*\n\nDia baru saja klik tombol: *${jawaban}*! ❤️🎉`;
       const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
 
       fetch(url, {
@@ -116,27 +77,23 @@
           text: pesan,
           parse_mode: 'Markdown'
         })
-      }).catch(err => console.log('Error kirim notif:', err));
+      });
     }
 
     function kabur() {
       const btnGak = document.getElementById('btnGak');
-      
-      // Menghitung posisi acak agar tombol kabur di area sekitar
-      const x = Math.floor(Math.random() * 220) - 110;
+      const x = Math.floor(Math.random() * 200) - 100;
       const y = Math.floor(Math.random() * 160) - 80;
-      
       btnGak.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     function terima() {
-      // Mengubah tampilan setelah diterima
       document.getElementById('emoji').innerText = "🥰💖";
       document.getElementById('pertanyaan').innerText = "Yeay! Makasih yaa!";
-      document.getElementById('pesan').innerHTML = "Makasih udah mau terima aku. <br>Kabar baik ini bakal aku ingat terus! ✨";
+      document.getElementById('pesan').innerHTML = "Makasih udah mau terima aku. <br>Mulai hari ini, cerita kita dimulai! ✨";
       document.getElementById('btnGroup').style.display = 'none';
 
-      // Mengirimkan notifikasi langsung ke Telegram
+      // Mengirimkan notifikasi
       kirimNotifikasi('MAU / DITERIMA!');
     }
   </script>
