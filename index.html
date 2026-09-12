@@ -65,10 +65,10 @@
   <div class="card">
     <div class="emoji-main" id="emoji">💌</div>
     <h1 id="pertanyaan">Hai, aku mau jujur sesuatu...</h1>
-    <p id="pesan">Selama ini aku ngerasa nyaman banget kalau sama kamu. Kamu mau gak jalanin hubungan yang lebih serius sama aku?</p>
+    <p id="pesan">Aku suka sama kamu. jadi aku mau nanya langsung... mau nggak jadi pacar aku?</p>
     
     <div class="btn-container" id="btnGroup">
-      <button id="btnMau" onclick="terima()">Mau Bgt! ❤️</button>
+      <button id="btnMau" onclick="terima()">Mau! ❤️</button>
       <button id="btnGak" onmouseover="kabur()" onclick="kabur()" ontouchstart="kabur()">Gak</button>
     </div>
   </div>
@@ -108,7 +108,7 @@
     function terima() {
       document.getElementById('emoji').innerText = "🥰💖";
       document.getElementById('pertanyaan').innerText = "Yeay! Makasih yaa!";
-      document.getElementById('pesan').innerHTML = "Makasih udah mau terima aku. <br>Mulai hari ini, cerita kita dimulai! ✨";
+      document.getElementById('pesan').innerHTML = "Makasih udah mau terima aku. <br>Moment imi bakal aku ingat terus! ✨";
       document.getElementById('btnGroup').style.display = 'none';
 
       // Mengirimkan notifikasi ke Telegram
