@@ -1,0 +1,2 @@
+# menyatakan
+cuma pengen menyatakan
