@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ada yang mau aku omongin...</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffe6e9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 { color: #e91e63; font-size: 24px; }
+    p { color: #555; }
+    .btn-container {
+      margin-top: 25px;
+      position: relative;
+      height: 50px;
+    }
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    #btnMau {
+      background-color: #e91e63;
+      color: white;
+      margin-right: 10px;
+    }
+    #btnMau:hover { transform: scale(1.1); }
+    #btnGak {
+      background-color: #777;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="pertanyaan">Kamu mau gak jadi pacar aku? ❤️</h1>
+    <p id="pesan">Aku udah lama merhatiin kamu dan makin yakin sama perasaan ini.</p>
+    
+    <div class="btn-container">
+      <button id="btnMau" onclick="terima()">Mau!</button>
+      <button id="btnGak" onmouseover="kabur()">Gak</button>
+    </div>
+  </div>
+
+  <script>
+    function kabur() {
+      const btnGak = document.getElementById('btnGak');
+      const x = Math.floor(Math.random() * 200) - 100;
+      const y = Math.floor(Math.random() * 200) - 100;
+      btnGak.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function terima() {
+      document.getElementById('pertanyaan').innerText = "Yeay! Makasih ya! 🥰";
+      document.getElementById('pesan').innerText = "Kabar baik ini bakal aku ingat terus hari ini!";
+      document.getElementById('btnGak').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
