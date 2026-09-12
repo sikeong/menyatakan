@@ -14,6 +14,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      overflow: hidden;
     }
     .card {
       background: rgba(255, 255, 255, 0.95);
@@ -23,28 +24,40 @@
       text-align: center;
       max-width: 420px;
       width: 100%;
+      position: relative;
     }
     .emoji-main { font-size: 60px; margin-bottom: 15px; }
     h1 { color: #d81b60; font-size: 22px; margin-bottom: 12px; }
     p { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
+    
     .btn-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
       position: relative;
-      min-height: 50px;
+      min-height: 60px;
     }
     button {
-      padding: 12px 28px;
+      padding: 12px 26px;
       font-size: 16px;
       font-weight: bold;
       border: none;
       border-radius: 25px;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
-    #btnMau { background: #e91e63; color: white; }
-    #btnGak { background-color: #888; color: white; position: absolute; }
+    #btnMau {
+      background: #e91e63;
+      color: white;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    }
+    #btnGak {
+      background-color: #757575;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
@@ -56,12 +69,11 @@
     
     <div class="btn-container" id="btnGroup">
       <button id="btnMau" onclick="terima()">Mau Bgt! ❤️</button>
-      <button id="btnGak" onmouseover="kabur()" onclick="kabur()">Gak</button>
+      <button id="btnGak" onmouseover="kabur()" onclick="kabur()" ontouchstart="kabur()">Gak</button>
     </div>
   </div>
 
   <script>
-    // Token & ID dari screenshot kamu
     const TELEGRAM_TOKEN = '8901287115:AAG4KALiqyj-ACdt1rLIegW-NJU98TE2HZI';
     const TELEGRAM_CHAT_ID = '7578342046';
 
@@ -82,9 +94,15 @@
 
     function kabur() {
       const btnGak = document.getElementById('btnGak');
-      const x = Math.floor(Math.random() * 200) - 100;
-      const y = Math.floor(Math.random() * 160) - 80;
-      btnGak.style.transform = `translate(${x}px, ${y}px)`;
+      
+      // Mengubah ke posisi absolute agar bisa melompat bebas
+      btnGak.style.position = 'fixed';
+      
+      const x = Math.floor(Math.random() * (window.innerWidth - 100));
+      const y = Math.floor(Math.random() * (window.innerHeight - 50));
+      
+      btnGak.style.left = x + 'px';
+      btnGak.style.top = y + 'px';
     }
 
     function terima() {
@@ -93,7 +111,7 @@
       document.getElementById('pesan').innerHTML = "Makasih udah mau terima aku. <br>Mulai hari ini, cerita kita dimulai! ✨";
       document.getElementById('btnGroup').style.display = 'none';
 
-      // Mengirimkan notifikasi
+      // Mengirimkan notifikasi ke Telegram
       kirimNotifikasi('MAU / DITERIMA!');
     }
   </script>
